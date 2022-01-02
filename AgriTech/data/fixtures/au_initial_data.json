@@ -1,0 +1,50 @@
+[
+    {
+        "model": "data.Role",
+        "pk": 1,
+        "fields": {
+            "role": "Database Admin",
+           "short_name": "super"
+        }
+    },
+    {
+        "model": "data.Role",
+        "pk": 2,
+        "fields": {
+            "role": "Federal Adminstrative User",
+           "short_name": "federal"
+        }
+    },
+    {
+        "model": "data.Role",
+        "pk": 3,
+        "fields": {
+            "role": "Regional Adminstrative User",
+           "short_name": "region"
+        }
+    },
+    {
+        "model": "data.Role",
+        "pk": 4,
+        "fields": {
+            "role": "Zone Adminstrative User",
+           "short_name": "zone"
+        }
+    },
+    {
+        "model": "data.Role",
+        "pk": 5,
+        "fields": {
+            "role": "wereda Adminstrative User",
+           "short_name": "wereda"
+        }
+    },
+    {
+        "model": "data.Role",
+        "pk": 6,
+        "fields": {
+            "role": "Field Advisor User",
+           "short_name": "advisor"
+        }
+    }
+]

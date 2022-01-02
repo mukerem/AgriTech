@@ -1,0 +1,76 @@
+{% extends "federal_base_site.html" %}
+
+{% block content %}
+<form method="POST" accept="{% url 'crop_prediction' %}" style="mergin-left: 10%; margin-top:2%;">
+	{% csrf_token %}
+	<div class="h3 mb-0 font-weight-bold text-gray-800" style="margin-left:5%;">Information</div>
+	<div class="row" style="margin-left:5%;">
+
+		<div class="col-xl-3 col-md-6 mb-4">
+	      <div class="card border-left-primary shadow h-100 py-2">
+	        <div class="card-body">
+	          <div class="row no-gutters align-items-center">
+	            <div class="col mr-2">
+	              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">ZONE</div>
+	              	<div class="form-group">
+				      <select class="selectpicker form-control" name="Zone_Name" required>
+				      	<option></option>
+				        {% for c in zone%}
+				        <option value="{{c}}">{{c}}</option>
+				        
+                        {% endfor %}
+				      </select>
+				    </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+	    <div class="col-xl-3 col-md-6 mb-4">
+	      <div class="card border-left-primary shadow h-100 py-2">
+	        <div class="card-body">
+	          <div class="row no-gutters align-items-center">
+	            <div class="col mr-2">
+	              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CROP</div>
+	              	<div class="form-group">
+				      <select class="selectpicker form-control" name="Crop" required>
+				      	<option></option>
+                        {% for c in crop%}
+				        <option value="{{c}}">{{c}}</option>
+				        
+                        {% endfor %}
+				      </select>
+				    </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+
+		<div class="col-xl-3 col-md-6 mb-4">
+	      <div class="card border-left-primary shadow h-100 py-2">
+	        <div class="card-body">
+	          <div class="row no-gutters align-items-center">
+	            <div class="col mr-2">
+	              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">AREA</div>
+	              	<div class="form-group">
+				      <input class="input form-control" name="Area" type="number" required>
+				      	
+				    </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+    </div>
+	<input type="submit" value="Crop Predict" class="btn btn-outline-info" style="margin-left:5%;">
+
+    </form>
+    {% if prediction != -1 %}
+    <br>
+    <div class="font-weight-bold text-primary" style="margin-left:5%;">
+        <h1><strong>Crop production will be {{ prediction }} quantal per year<strong></h1>
+    </div>
+    {% endif %}
+{% endblock%}

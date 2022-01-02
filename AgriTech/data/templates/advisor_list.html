@@ -1,0 +1,62 @@
+{% extends 'federal_base_site.html'%}
+{% block title%}Region List | AgriTech{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="card" style="margin-left: 5%;  margin-right: 25%; margin-top: 3%">
+    <div class="card-header" style="font-size: 18px;"> 
+        <strong>{{'Advsor List'|upper}}</strong> 
+        <ul class="object-tools" style="position: absolute;top: 60px; right: 15px;">
+           <li> <a href="{% url 'create-advisor' %}" class = "addlink">Add Advisor</a></li>
+       </ul>
+    </div>
+ 
+    <table >
+
+        <thead class="table-info">
+            <tr>
+                <th ><strong>No.</strong></th>
+                <th ><strong>Username</strong></th>
+                <th ><strong>Name</strong></th>
+                <th ><strong>phone</strong></th>            
+                <th ><strong>gender</strong></th>            
+                <th ><strong>woreda</strong></th>            
+                <th ><strong>zone</strong></th>            
+                <th ><strong>Region</strong></th>            
+                <th ><strong>Educational Level</strong></th> 
+                <th ><strong>Update</strong></th>            
+
+            </tr>
+        </thead>
+
+        {% for i in advisor %}
+            <tr>
+                <td >{{forloop.counter}}</td>
+                <td ><a href="{% url 'index' %}" style="text-decoration: none;">{{i.username}} </a></td>
+                <td >{{i.name}}</td>
+                <td >{{i.phone}}</td>
+                <td >{{i.gender}}</td>
+                <td >{{i.wereda }}</td>
+                <td >{{i.zone }}</td>
+                <td >{{i.region}}</td>
+                <td >{{i.education_level}}</td>
+                <td ><a href="{% url 'edit-advisor' i.id %}" style="text-decoration: none;">edit </a></td>
+
+               
+            </tr>
+        {% empty %}
+
+        <br><br>
+            <b>No Advisor Data available</b>
+            <br>
+            <br>
+            <br>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
+   

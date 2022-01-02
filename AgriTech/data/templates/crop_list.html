@@ -1,0 +1,38 @@
+{% extends 'advisor_base_site.html'%}
+{% block title%}Crop List | AgriTech{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="card" style="margin-left: 10%;  margin-right: 40%; margin-top: 3%">
+    <div class="card-header" style="font-size: 18px;"> 
+        <strong>{{'crop list'|upper}}</strong> 
+        <ul class="object-tools" style="position: absolute;top: 60px; right: 15px;">
+           <li> <a href="{% url 'add_crop' %}" class = "addlink">Add Crop</a></li>
+       </ul>
+    </div>
+ 
+    <table >
+        <thead class="table-info">
+            <tr>
+                <th ><strong>No.</strong></th>
+                <th ><strong>Name</strong></th>
+            
+            
+            </tr>
+        </thead>
+        {% for i in crop %}
+            <tr>
+                <td >{{forloop.counter}}</td>
+                <td ><a href="{% url 'edit_crop' i.id %}" style="text-decoration: none;">{{i.name}} </a></td>
+            
+                
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
+   

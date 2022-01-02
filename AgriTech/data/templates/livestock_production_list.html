@@ -1,0 +1,43 @@
+{% extends 'advisor_base_site.html'%}
+{% block title%}Livestock List | AgriTech{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="card" style="margin-left: 10%;  margin-right: 40%; margin-top: 3%">
+    <div class="card-header" style="font-size: 18px;"> 
+        <strong>{{'Livestock Production list'|upper}}</strong> 
+        <ul class="object-tools" style="position: absolute;top: 60px; right: 15px;">
+           <li> <a href="{% url 'add_livestock_production' %}" class = "addlink">Add Livestock Production</a></li>
+       </ul>
+    </div>
+ 
+    <table >
+        <thead class="table-info">
+            <tr>
+                <th ><strong>No.</strong></th>
+                <th ><strong>Farmer</strong></th>
+                <th ><strong>Livestock</strong></th>
+                <th ><strong>Quantity</strong></th>
+                <th ><strong>Date</strong></th>
+            
+            
+            </tr>
+        </thead>
+        {% for i in livestock %}
+            <tr>
+                <td >{{forloop.counter}}</td>
+                <td ><a href="{% url 'edit_livestock_production' i.id %}" style="text-decoration: none;">{{i.farmer}} </a></td>
+                <td >{{i.livestock}}</td>
+                <td >{{i.quantity}}</td>
+                <td >{{i.date}}</td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
+   

@@ -1,0 +1,44 @@
+{% extends 'advisor_base_site.html'%}
+{% block title%}Farmer List | AgriTech{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="card" style="margin-left: 1%;  margin-right: 1%; margin-top: 3%">
+    <div class="card-header" style="font-size: 18px;"> 
+        <strong>{{'farmer list'|upper}}</strong> 
+        <ul class="object-tools" style="position: absolute;top: 60px; right: 15px;">
+           <li> <a href="{% url 'add_farmer' %}" class = "addlink">Add Farmer</a></li>
+       </ul>
+    </div>
+ 
+    <table >
+        <thead class="table-info">
+            <tr>
+                <th ><strong>No.</strong></th>
+                <th ><strong>ID Number</strong></th>
+                <th ><strong>Name</strong></th>
+                <th ><strong>Area</strong></th>
+                <th ><strong>Wereda</strong></th>
+                <th ><strong>Phone</strong></th>
+            
+            </tr>
+        </thead>
+        {% for i in farmer %}
+            <tr>
+                <td >{{forloop.counter}}</td>
+                <td >{{i.id_number}}</td>
+                <td ><a href="{% url 'edit_farmer' i.id %}" style="text-decoration: none;">{{i.name}} </a></td>
+                <td >{{i.area}}</td>
+                <td >{{i.wereda}}</td>
+                
+                <td >{{i.phone}}</td>                
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
+   

@@ -1,0 +1,19 @@
+{% extends 'federal_base_site.html'%}
+
+<title>{% block title%} Home | AgriTech {% endblock %}</title>
+
+{% block content %}
+<div style="margin-left: 5%; margin-top:40px;">
+    <h1><a href="/">AgriTech </a></h1>
+    <h2>Add Zone</h2>
+    <ul >
+        <form method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Add</button>
+        </form>
+        
+    </ul>
+        
+</div>
+{% endblock %}

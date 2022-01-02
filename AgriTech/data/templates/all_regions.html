@@ -1,0 +1,48 @@
+{% extends 'federal_base_site.html'%}
+{% block title%}Region List | AgriTech{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="card" style="margin-left: 5%;  margin-right: 25%; margin-top: 3%">
+    <div class="card-header" style="font-size: 18px;"> 
+        <strong>{{'Region list'|upper}}</strong> 
+        <ul class="object-tools" style="position: absolute;top: 60px; right: 15px;">
+           <li> <a href="{% url 'add-region' %}" class = "addlink">Add Region</a></li>
+       </ul>
+    </div>
+ 
+    <table >
+        <thead class="table-info">
+            <tr>
+                <th ><strong>No.</strong></th>
+                <th ><strong>Name</strong></th>
+                <th ><strong>Population</strong></th>
+                <th ><strong>Area</strong></th>
+                <th ><strong>Flag</strong></th>
+                <th ><strong>update</strong></th>
+            
+            </tr>
+        </thead>
+        {% for i in region %}
+            <tr>
+                <td >{{forloop.counter}}</td>
+                <td ><a href="{% url 'zone' i.id %}" style="text-decoration: none;">{{i.name}} </a></td>
+                <td >{{i.population}} </td>
+                <td >{{i.area}} km &#178; </td>
+                <td class="td right team">
+                    <img src="{{i.flag.url}}" style = "height:30px; width:30px;margin-right:1em;" >
+                </td>
+                <td ><a href="{% url 'edit-region' i.id %}" style="text-decoration: none;">Edit </a></td>
+                
+            </tr>
+        {% empty %}
+        <p>No Region Data available</p>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
+   
